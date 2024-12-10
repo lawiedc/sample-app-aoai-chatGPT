@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://792d10abcb004922a8095a98f3c6b917.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_4a3bcdfba6884abc861060b8ead7e492 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_60c5657894a6414c82a8756caa173eb4 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_556b1e134aa14e72bca1d6cc1ab852ed }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_508094149e314d058565c6f4a397b80d }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: 792d10abcb004922a8095a98f3c6b917.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_4a3bcdfba6884abc861060b8ead7e492 }}/duncan-chatapp:${{ github.sha }}
+        tags: 792d10abcb004922a8095a98f3c6b917.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_556b1e134aa14e72bca1d6cc1ab852ed }}/duncan-chatapp:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'kline-riya3'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_41b2651ae28847d7b03f6ed0cc91946a }}
-        images: '792d10abcb004922a8095a98f3c6b917.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_4a3bcdfba6884abc861060b8ead7e492 }}/duncan-chatapp:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_2b4171b922c448a49c86321af8f29cfd }}
+        images: '792d10abcb004922a8095a98f3c6b917.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_556b1e134aa14e72bca1d6cc1ab852ed }}/duncan-chatapp:${{ github.sha }}'
